@@ -5,18 +5,6 @@ from PIL import Image
 
 # Create your models here.
 
-# class Users(models.Model):
-#     username = models.CharField(max_length=50)
-#     password = models.CharField(max_length=50)
-    
-   
-#     def __str__(self):
-#         return self.username
-    
-# class Profile(models.Model):
-#     user=models.OneToOneField(User ,on_delete=models.CASCADE)
-#     image=models.ImageField(blank=True,upload_to='media/')
-#     bio=models.TextField(blank=True, null=True)
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

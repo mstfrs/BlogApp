@@ -38,32 +38,14 @@ class Post(models.Model):
     def number_of_likes(self):
         return self.likes.all().count()
     
-# LIKE_CHOICES=(
-#     ("Like","Like"),
-#     ("Unlike","Unlike")
-# )    
 
-# class Like(models.Model):
-#     user=models.ForeignKey(User,on_delete=models.CASCADE)   
-#     post=models.ForeignKey(Post,on_delete=models.CASCADE)   
-#     value=models.CharField(choices=LIKE_CHOICES, default="Like",max_length=10)
-    
-#     def __str__(self):
-#         return str(self.post)
-    
-# class Comment(models.Model):
-#     time_stamp=models.DateTimeField(auto_now_add=True, blank=False)
-#     content=models.TextField(max_length=300)
-#     user=models.ForeignKey(User, on_delete=models.CASCADE)
-#     post=models.ForeignKey(Post,on_delete=models.CASCADE)
-    
  
 
 class Comment(models.Model): 
     post = models.ForeignKey(Post,on_delete=models.CASCADE, related_name='comments')
     name = models.ForeignKey(User, on_delete=models.CASCADE) 
     body = models.TextField(blank=True) 
-    created = models.DateTimeField(auto_now_add=True,blank=True) 
+    created = models.DateTimeField(auto_now_add=True) 
     updated = models.DateTimeField(auto_now=True) 
     active = models.BooleanField(default=True) 
 
@@ -73,7 +55,3 @@ class Comment(models.Model):
     def __str__(self): 
         return 'Comment by {} on {}'.format(self.name, self.post) 
     
-# @receiver (pre_save, sender=Post)
-# def pre_save_receiver(sender, instance, *args, **kwargs):
-#    if not instance.slug:
-#        instance.slug = unique_slug_generator (instance)
