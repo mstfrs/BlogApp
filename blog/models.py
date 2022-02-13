@@ -1,6 +1,6 @@
 from multiprocessing.sharedctypes import Value
 from statistics import mode
-from tkinter import CASCADE
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
