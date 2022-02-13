@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+
+  <div class="container">
+
+    <div class="container card" style="width: 40rem;">
+      <img src="../../../media/{{post.image}}" class="card-img-top" alt="post_image">
+      <div class="card-body">
+        <h2 class="card-title">{{post.title}}</h2>
+        <hr>
+        <div>
+          <span><i class="far fa-comment-alt ml-2"></i></i> {{ comments.count }} comments</span>
+
+          <span class="float-right"> <small>Posted {{comment.created}}</small> </span>
+        </div>
+        <hr>
+        <p class="card-text">{{ post.content }}</p>
+        <hr>
+        <div>
+          <h4>Enjoy this post? Give it a LIKE!!</h4>
+        </div>
+
+        <div>
+
+          {% if user.is_authenticated %}
+          <form action="{% url 'blogpost_like' post.id %}" method="POST">
+            {% csrf_token %}
+
+            {% if post_is_liked %}
+            <button type="submit" name="blogpost_id" value="{{post.id}}" class="btn btn-info">Unlike</button>
+            {% else %}
+            <button type="submit" name="blogpost_id" value="{{post.id}}" class="btn btn-info">Like</button>
+            {% endif %}
+          </form>
+          {% else %}
+          <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this
+            article!</a><br>
+          {% endif %}
+          <strong class="text-secondary">{{ number_of_likes }} Like</strong>
+
+          <hr>
+          {% if request.user.is_authenticated %}
+          <!--  -->
+          <h4>Leave a comment below</h4>
+
+          <!-- {% if new_comment %}
+          <div class="alert alert-success" role="alert">
+            Your comment is awaiting moderation
+          </div> -->
+          {% else %}
+          <form method="post" style="margin-top: 1.3em">
+            {{ comment_form.body }} {% csrf_token %}
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg">SEND</button>
+          </form>
+          {% endif %}
+
+          {% endif %}
+
+          <hr>
+          {% if request.user.is_authenticated %} {% if request.user == post.author %}
+
+          <a href="/blog/update/{{ post.id }}"><button type="submit" class="btn btn-primary btn-lg">EDIT</button></a>
+          <a href="/blog/delete/{{ post.id }}"><button type="submit" class="btn btn-primary btn-lg">DELETE</button> </a>
+          {% endif %} {% endif %}
+
+          <h4>Comments</h4>
+
+
+
+
+
+
+
+
+          {% for comment in comments %}
+
+          <div>
+            <p>
+              <small><b>Comment by {{comment.name}}</b></small> - <small> {{comment.created}}
+              </small>
+            </p>
+            <p>
+              {{comment.body}}
+
+            </p>
+          </div>
+          <hr>
+          {% endfor %}
+
+
+
+        </div>
+
+      </div>
+
+      <div class="m-3">
+
+      </div>
+
+    </div>
+
+
+
+
+    {% endblock content %}

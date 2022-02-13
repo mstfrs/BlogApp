@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Blog Post</h3>
+        <hr />
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %} {{form.as_p}}
+          <!-- <input
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="sFWVvXX75nJ8R5T0aemZ1LyfuHWyuU8jyDK2FshjxHqsVfc2TgwZkKAnfnns9UR6"
+          />
+
+          <div id="div_id_title" class="form-group">
+            <label for="id_title" class="requiredField">
+              Title<span class="asteriskField">*</span>
+            </label>
+            <div class="">{{form.title}}</div>
+          </div>
+          <div id="div_id_content" class="form-group">
+            <label for="id_content" class="requiredField">
+              Content<span class="asteriskField">*</span>
+            </label>
+            <div class="">
+              {{form.content}}
+              <!-- <textarea
+                name="content"
+                cols="40"
+                rows="10"
+                class="textarea form-control"
+                required
+                id="id_content"
+              ></textarea> -->
+            <!-- </div>
+          </div>
+          <div id="div_id_image" class="form-group">
+            <label for="id_image" class="requiredField">
+              Image<span class="asteriskField">*</span>
+            </label>
+            <div class="">
+              {{form.image}} -->
+              <!-- <input
+                type="file"
+                name="image"
+                accept="image/*"
+                class="clearablefileinput form-control-file"
+                id="id_image"
+              /> -->
+            </div>
+          </div>
+          <!-- <div id="div_id_category" class="form-group">
+            <label for="id_category" class="requiredField">
+              Category<span class="asteriskField">*</span>
+            </label>
+            <div class="">
+              <select
+                name="category"
+                class="select form-control"
+                id="id_category"
+              >
+                <option value="fe">Frontend</option>
+                <option value="be">Backend</option>
+                <option value="fs">Fullstack</option>
+              </select>
+            </div>
+          </div>
+          <div id="div_id_status" class="form-group">
+            <label for="id_status" class="requiredField">
+              Status<span class="asteriskField">*</span>
+            </label>
+            <div class="">
+              <select name="status" class="select form-control" id="id_status">
+                <option value="d">Draft</option>
+                <option value="p">Published</option>
+              </select>
+            </div>
+          </div> -->
+
+          <br /> -->
+          <button type="submit" class="btn btn-outline-info">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
