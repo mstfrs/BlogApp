@@ -1,8 +1,3 @@
-from dataclasses import fields
-from logging import PlaceHolder
-from pyexpat import model
-from tkinter import Widget
-from tkinter.ttk import Style
 from django import forms
 from .models import  Post,Comment
 
