@@ -44,7 +44,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE, related_name='comments')
     name = models.ForeignKey(User, on_delete=models.CASCADE) 
     body = models.TextField(blank=True) 
-    created = models.DateTimeField(auto_now_add=True) 
+    created = models.DateTimeField(auto_now_add=True , blank=True) 
     updated = models.DateTimeField(auto_now=True) 
     active = models.BooleanField(default=True) 
 
