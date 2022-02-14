@@ -22,11 +22,16 @@ class Category(models.Model):
         return self.name
 
 class Post(models.Model):
+    CATEGORY_CHOICES=[
+        ( 'FrontEnd','FrontEnd'),
+        ('BackEnd','BackEnd' ),
+        ('FullStack','FullStack' ),
+    ]
     title = models.CharField(max_length=50)
     content = models.CharField(max_length=3000)
     image=models.ImageField(blank=True, upload_to='post_images')
     author=models.ForeignKey(User ,on_delete=models.CASCADE)
-    category=models.ForeignKey(Category ,on_delete=models.CASCADE)
+    category=models.CharField(max_length=100, choices=CATEGORY_CHOICES)
     likes=models.ManyToManyField(User,related_name='blogpost_like', blank=True)
     
   
