@@ -31,7 +31,7 @@ class Post(models.Model):
     content = models.CharField(max_length=3000)
     image=models.ImageField(blank=True, upload_to='post_images')
     author=models.ForeignKey(User ,on_delete=models.CASCADE)
-    category=models.CharField(max_length=100, choices=CATEGORY_CHOICES)
+    category=models.ForeignKey(Category, on_delete=models.CASCADE, blank=True)
     likes=models.ManyToManyField(User,related_name='blogpost_like', blank=True)
     
   
